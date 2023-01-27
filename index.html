@@ -5,132 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自己紹介</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1> API実習 自己紹介</h1>
-    <ul class="accordion-area">
-        <li>
-            <section>
-                <h2 class="title">Name</h2>
-                <div class="box">
-                    <p>名前：髙橋 美雅
-                        <br>性別：男
-                    </p>
-                </div>
-            </section>
-        </li>
 
-        <li>
-            <section>
-                <h2 class="title">From</h2>
-                <div class="box">
-                    <p>新潟県 新潟市
-                        <br>おすすめスポット：やすらぎ堤
-                    </p>
-                </div>
-            </section>
-        </li>
+    <div class="search">
+        <input type="search" placeholder="検索したい映画を入力" id="searchbox" class="searchbox">
+        <input type="button" onclick="get()" value="検索" class="searchbutton">
+    </div>
 
-        <li>
-            <section>
-                <h2 class="title">Hobby</h2>
-                <div class="box">
-        <li>映画鑑賞</li>
-        <p>おすすめ映画：トランスフォーマー</p>
-        <br>
-        <li>アニメ鑑賞</li>
-        <p>おすすめアニメ：ナルト</p>
-        <br>
-        <li>古着屋巡り</li>
-        </div>
-        </section>
-        </li>
-    </ul>
-    <style>
-        h1{
-            text-align: center;
-            font-weight: normal;
+    <div id="title" class="title">
+        <h1>Trending Movie</h1>
+    </div>
 
-        }
-        .accordion-area {
-            list-style: none;
-            width: 96%;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+    <div class="movie">
+        <ul id="scroll_content" class="scroll_content"></ul>
+    </div>
 
-        .accordion-area li {
-            margin: 10px 0;
-        }
+    <div id="title2" class="title2">
+        <h1>近くの映画館</h1>
+    </div>
 
-        .accordion-area section {
-            border: 1px solid #ccc;
-        }
+    <div id="map"></div>
 
-        .title {
-            position: relative;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: normal;
-            padding: 3% 3% 3% 50px;
-            transition: all .5s ease;
-        }
-
-        .title::before,
-        .title::after {
-            position: absolute;
-            content: '';
-            width: 15px;
-            height: 2px;
-            background-color: #333;
-
-        }
-
-        .title::before {
-            top: 48%;
-            left: 15px;
-            transform: rotate(0deg);
-
-        }
-
-        .title::after {
-            top: 48%;
-            left: 15px;
-            transform: rotate(90deg);
-
-        }
-
-        .title.close::before {
-            transform: rotate(45deg);
-        }
-
-        .title.close::after {
-            transform: rotate(-45deg);
-        }
-
-        .box {
-            display: none;
-
-            background: #f3f3f3;
-            margin: 0 3% 3% 3%;
-            padding: 3%;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script>
-        $('.title').on('click', function () {
-            var findElm = $(this).next(".box");
-            $(findElm).slideToggle();
-            if ($(this).hasClass('close')) {
-                $(this).removeClass('close');
-            } else {
-                $(this).addClass('close');
-            }
-        });
-    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBAKkPhI_X0LIFiPLhMkX3DS1QIy5EBgg&callback=initMap&libraries=places&v=weekly"
+        defer></script>
 </body>
 
 </html>
